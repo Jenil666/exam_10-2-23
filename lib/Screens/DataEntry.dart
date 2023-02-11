@@ -15,6 +15,39 @@ class _DataEntryState extends State<DataEntry> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          floatingActionButton: Align(
+            alignment: Alignment.bottomRight,
+            child: InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, 'homescreen');
+                setState(() {
+                  i++;
+                  name.add(txtname.text);
+                  std.add(txtstd.text);
+                  grid.add(txtgr.text);
+
+
+                  print("$name");
+                  print("$std");
+                  print("$grid");
+                  print(i);
+                });
+                txtstd.clear();
+                txtgr.clear();
+                txtname.clear();
+              },
+              child: Container(
+                height: 60,
+                width: 60,
+                alignment: Alignment.center,
+                child: Text("Done",style: TextStyle(color: Colors.white),),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(80),
+                ),
+              ),
+            ),
+          ),
       appBar: AppBar(
         title: Text("Data Entry"),
         leading: IconButton(onPressed: (){
@@ -27,25 +60,6 @@ class _DataEntryState extends State<DataEntry> {
           body: Stack(
             children: [
               ListView.builder(itemCount: 1,itemBuilder: (context, index) => entry(),),
-              Padding(
-                padding: EdgeInsets.only(top: 700,left: 400),
-                child: FloatingActionButton(onPressed: (){
-                  Navigator.pop(context);
-                  setState(() {
-                    i++;
-                    name.add(txtname.text);
-                    std.add(txtstd.text);
-                    grid.add(txtgr.text);
-
-                    print("$name");
-                    print("$std");
-                    print("$grid");
-                  });
-                  txtstd.clear();
-                  txtgr.clear();
-                  txtname.clear();
-                },child: Text("Done"),),
-              ),
             ],
           ),
     ));
@@ -56,12 +70,21 @@ class _DataEntryState extends State<DataEntry> {
       children: [
         TextField(
           controller: txtname,
+          decoration: InputDecoration(
+            hintText: "Enter Name"
+          ),
         ),
         TextField(
           controller: txtgr,
+          decoration: InputDecoration(
+              hintText: "Enter GrId"
+          ),
         ),
         TextField(
           controller: txtstd,
+          decoration: InputDecoration(
+              hintText: "Enter Std"
+          ),
         ),
       ],
     );
