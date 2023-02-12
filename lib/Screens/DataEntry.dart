@@ -42,20 +42,21 @@ class _DataEntryState extends State<DataEntry> {
                 alignment: Alignment.center,
                 child: Text("Done",style: TextStyle(color: Colors.white),),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.black,
                   borderRadius: BorderRadius.circular(80),
                 ),
               ),
             ),
           ),
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text("Data Entry"),
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
           txtstd.clear();
           txtgr.clear();
           txtstd.clear();
-        }, icon: Icon(Icons.chevron_left_outlined)),
+        }, icon: Icon(Icons.cancel_sharp,color: Colors.white,)),
       ),
           body: Stack(
             children: [
@@ -68,22 +69,43 @@ class _DataEntryState extends State<DataEntry> {
   Widget entry() {
     return Column(
       children: [
-        TextField(
-          controller: txtname,
-          decoration: InputDecoration(
-            hintText: "Enter Name"
+        Container(
+          margin: EdgeInsets.all(10),
+          child: TextField(
+            cursorColor: Colors.black,
+            controller: txtname,
+            decoration: InputDecoration(
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              hintText: "Enter Name"
+            ),
           ),
         ),
-        TextField(
-          controller: txtgr,
-          decoration: InputDecoration(
-              hintText: "Enter GrId"
+        Container(
+          margin: EdgeInsets.all(10),
+          child: TextField(
+            cursorColor: Colors.black,
+            controller: txtgr,
+            decoration: InputDecoration(
+                hintText: "Enter GrId",
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.black),
+              ),
+            ),
           ),
         ),
-        TextField(
-          controller: txtstd,
-          decoration: InputDecoration(
-              hintText: "Enter Std"
+        Container(
+          margin: EdgeInsets.all(10),
+          child: TextField(
+            cursorColor: Colors.black,
+            controller: txtstd,
+            decoration: InputDecoration(
+                hintText: "Enter Std",
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.black),
+              ),
+            ),
           ),
         ),
       ],
